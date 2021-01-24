@@ -6,7 +6,7 @@ import db from './firebase'
 import Message from './Message'
 import ChatInput from './ChatInput';
 
-import axios from './axios'
+import axios from './axios.js'
 
 const Chat = () => {
     const { roomId } = useParams();
@@ -31,7 +31,7 @@ const Chat = () => {
             <div className="chat__header">
                 <div className="chat__headerLeft">
                     <h4 className="chat__channelName">
-                        <strong> #{roomDetails?.name} </strong>
+                        <strong> #{roomDetails} </strong>
                         {/* <strong>#general</strong> */}
                         <StarBorderOutlined />
                     </h4>
@@ -53,7 +53,7 @@ const Chat = () => {
                     />
                 ))}
             </div>
-            <ChatInput channelName={roomDetails?.name} channelId={roomId} />
+            <ChatInput channelName={roomDetails} channelId={roomId} />
         </div>
     )
 }

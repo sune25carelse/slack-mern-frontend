@@ -14,7 +14,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import db from './firebase'
-import axios from 'axios'
+import axios from './axios.js'
 
 const Sidebar = () => {
     const [channels, setChannels] = useState([]);
