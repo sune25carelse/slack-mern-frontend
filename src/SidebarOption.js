@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import db from './firebase'
 import axios from 'axios';
 
+
 const SidebarOption = ({ Icon, id, addChannelOption, title }) => {
     const history = useHistory();
 
