@@ -14,10 +14,14 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import db from './firebase'
+
 import axios from './axios.js'
+import { useStateValue } from './StateProvider';
 
 const Sidebar = () => {
     const [channels, setChannels] = useState([]);
+    const [{ user }] = useStateValue();
+
 
     const getChannelList = () => {
         axios.get('/get/channelList').then((res) => {
@@ -38,7 +42,7 @@ const Sidebar = () => {
                     <h2>Clecer Programmer</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Rafeh Qazi
+                        {user.displayName}
                     </h3>
                 </div>
                 <CreateIcon />
