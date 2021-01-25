@@ -17,6 +17,7 @@ import db from './firebase'
 
 import axios from './axios.js'
 import { useStateValue } from './StateProvider';
+import Pusher from 'pusher-js'
 
 const Sidebar = () => {
     const [channels, setChannels] = useState([]);

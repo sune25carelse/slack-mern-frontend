@@ -7,6 +7,8 @@ import Message from './Message'
 import ChatInput from './ChatInput';
 
 import axios from './axios.js'
+import Pusher from 'pusher-js'
+
 
     const pusher = new Pusher('ebbf063369b5064a7f31', {
         cluster: 'us3'
