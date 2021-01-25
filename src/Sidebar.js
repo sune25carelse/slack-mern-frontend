@@ -22,6 +22,9 @@ const Sidebar = () => {
     const [channels, setChannels] = useState([]);
     const [{ user }] = useStateValue();
 
+    const pusher = new Pusher('ebbf063369b5064a7f31', {
+        cluster: 'us3'
+    });
 
     const getChannelList = () => {
         axios.get('/get/channelList').then((res) => {
@@ -32,8 +35,11 @@ const Sidebar = () => {
     useEffect(() => {
        getChannelList()
 
-       // realtime stuff..
-    }, [])
+       const channel = pusher.subscribe('channels');
+       channel.bind('newChannel', function(data) {
+           getChannelList()
+       });
+   }, [])
 
     return (
         <div className='sidebar' >

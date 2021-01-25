@@ -8,7 +8,11 @@ import ChatInput from './ChatInput';
 
 import axios from './axios.js'
 
-const Chat = () => {
+    const pusher = new Pusher('ebbf063369b5064a7f31', {
+        cluster: 'us3'
+    });
+
+    const Chat = () => {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
     const [roomMessages, setRoomMessages] = useState([]);
@@ -24,7 +28,10 @@ const Chat = () => {
         if (roomId) {
             getConvo()
 
-            // real time stuff
+            const channel = pusher.subscribe('conversation');
+            channel.bind('newMessage', function(data) {
+                getConvo()
+            });
         }
     }, [roomId])
 
